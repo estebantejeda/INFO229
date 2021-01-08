@@ -2,11 +2,11 @@ FROM python:3.6.3
 
 ENV MONGO_HOST localhost
 ENV MONGO_PORT 27017
-ENV SLACK_TOKEN="xoxb-77335436279-1431847376817-6Z9s1ODePKMgqLt7eoAh6Gr9"
+ENV SLACK_TOKEN="xoxb-1412458313702-1443060376240-fCqsOztT8oW3HpCVEIHvZVaJ"
 
 COPY ./requirements.txt /requirements.txt
 
-RUN pip install -r /requirements.txt
+RUN pip3 install -r /requirements.txt
 
 WORKDIR /nestor
 
