@@ -1,25 +1,20 @@
 version: '3.6'  
-services:
-  rabbitmq:
-   image: rabbitmq:3-management
-   ports:
-      - '5672:5672'
-      - '15672:15672'
-   networks:
-      - network
-   container_name: rabbitmq
-   restart: 'always'
+services:  
+  wiki:
+    build:
+      context: ./wiki
+    container_name: wiki_connector
+    environment:
+      - MONGO_HOST=database
+    depends_on:
+      - database
+  database:
+    image: mongo
+    container_name: wiki_mongo
+    environment:
+      - MONGO_INITDB_DATABASE=wiki
+    volumes:
+      - ./mongodata:/data/db
+    ports:
+      - '27017-27019:27017-27019'
 
-  nestor_wikipedia_search:
-   build:
-      context: ./nestor
-   container_name: nestor
-   networks:
-      - network
-   environment:
-      - RABBITMQ_HOST=rabbitmq
-   depends_on:
-      - rabbitmq
-
-networks:
-  network: {}
