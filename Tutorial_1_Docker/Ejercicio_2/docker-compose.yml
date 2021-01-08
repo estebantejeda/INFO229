@@ -1,0 +1,25 @@
+version: '3.6'  
+services:
+  rabbitmq:
+   image: rabbitmq:3-management
+   ports:
+      - '5672:5672'
+      - '15672:15672'
+   networks:
+      - network
+   container_name: rabbitmq
+   restart: 'always'
+
+  nestor_wikipedia_search:
+   build:
+      context: ./nestor
+   container_name: nestor
+   networks:
+      - network
+   environment:
+      - RABBITMQ_HOST=rabbitmq
+   depends_on:
+      - rabbitmq
+
+networks:
+  network: {}
