@@ -1,11 +1,9 @@
-# Dockerizar Bot
-
 ~~~bash
-$ docker build . -t test_bot
+$ docker run -v $(pwd)/mongodata:/data/db --name "nestor_mongo" mongo &
+$ docker exec -it nestor_mongo bash
 ~~~
 
-# Ejecutar Bot
-
 ~~~bash
-docker run --rm test_bot
+$ docker-compose up
 ~~~
+
