@@ -1,14 +1,9 @@
-require('./config/config');
+const {PORT} = require('./config/config');
 
 const express = require('express');
-const mongoose = require('mongoose');
+const bot = require('./index');
 const app = express();
 
-app.listen(3000, () => {
-    console.log(`Escuchando en puerto ${3000}`);
-});
-
-mongoose.connect('mongodb://database/quotes', (err, res) => {
-    if (err) throw err;
-    console.log("DB online");
+app.listen(PORT, () => {
+    console.log(`Escuchando en puerto ${PORT}`);
 });
