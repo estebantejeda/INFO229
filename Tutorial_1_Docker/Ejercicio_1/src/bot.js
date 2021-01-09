@@ -4,13 +4,16 @@ const mongo = require('mongodb');
 
 const web = new WebClient(TOKEN);
 
-mongo.connect(URL, (err, db) => {
-    if(err) return console.log(err);
-    let dbo = db.db("database");
-    dbo.collection("quotes").aggregate([{$sample:{size:1}}]).toArray((err, result) => {
-        sendMessage(result[0].message);
-    });
-});
+mongo.connect(URL, {
+    useUnifiedTopology: true}, 
+    (err, db) => {
+        if(err) return console.log(err);
+        let dbo = db.db("database");
+        dbo.collection("quotes").aggregate([{$sample:{size:1}}]).toArray((err, result) => {
+            sendMessage(result[0].message);
+        });
+    }
+);
 
 async function sendMessage(message){
     await web.chat.postMessage({

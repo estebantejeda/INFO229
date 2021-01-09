@@ -1,7 +1,7 @@
 const {PORT} = require('./config/config');
 
 const express = require('express');
-const bot = require('./index');
+const bot = require('./bot');
 const app = express();
 
 app.listen(PORT, () => {
