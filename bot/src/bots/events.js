@@ -4,6 +4,7 @@ const {createEventAdapter} = require('@slack/events-api');
 const {sendMessage} = require('./client');
 const {searchWiki} = require('../apis/wikipedia');
 const {searchYoutube} = require('../apis/youtube');
+const {postWordpress} = require('../apis/wordpress');
 
 const slackEvents = createEventAdapter(STSECRET);
 
@@ -34,6 +35,9 @@ function election(data){
             break;
         case "Youtube":
             searchYoutube(text);
+            break;
+        case "Wordpress":
+            postWordpress(text);
             break;
         default: sendMessage("Opcion no encontrada");
     }
