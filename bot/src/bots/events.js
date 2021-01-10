@@ -13,6 +13,8 @@ slackEvents.on('app_mention', event => {
 });
 
 function getType(text){
+    if (text.indexOf('[') === -1) return -1;
+    if (text.indexOf(']') === -1) return -1;
     let start = text.indexOf('[')+1;
     let end = text.indexOf(']');
     text = text.substring(start, end).trim();
@@ -27,8 +29,9 @@ function getText(text){
 }
 
 function election(data){
-    let type = getType(data);
-    let text = getText(data);
+    let type = getType(data).trim();
+    let text = getText(data).trim();
+    if(text.length === 0) type = "Error";
     switch(type){
         case "Wikipedia":
             searchWiki(text);
@@ -39,7 +42,10 @@ function election(data){
         case "Wordpress":
             postWordpress(text);
             break;
-        default: sendMessage("Opcion no encontrada");
+        case "Error":
+            sendMessage("Error: Debes ingresar un cuerpo\nEjemplo: [Wikipedia] Batman");
+            break;
+        default: sendMessage("Error: Opcion no encontrada.\nPuede ser [Wikipedia], [Youtube] o [Wordpress]");
     }
 }
 

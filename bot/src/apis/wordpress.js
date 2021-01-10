@@ -9,6 +9,8 @@ const client = wordpress.createClient({
 
 function postWordpress(text){
     let data = trimData(text);
+    if(data === -1) return sendMessage("Error: Formato inválido. \nEjemplo: [Wordpress] Titulo - Texto");
+    if(data[0].length === 0 || data[1].length === 0) return sendMessage("Error: Formato inválido. \nEjemplo: [Wordpress] Titulo - Texto");
     data = createData(data);
     client.newPost(data, (err, post) => {
         sendMessage("Publicado!");
@@ -17,6 +19,7 @@ function postWordpress(text){
 }
 
 function trimData(text){
+    if(text.indexOf("-") === -1) return -1;
     text = text.split('-');
     for(let i = 0; i < 2; i++) text[i] = text[i].trim();
     return text;
