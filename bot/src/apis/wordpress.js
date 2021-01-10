@@ -1,10 +1,11 @@
+const {USERNAME, PASSWORD} = require('../config/config');
 const wordpress = require( "wordpress" );
 const {sendMessage} = require('./../bots/client');
 
 const client = wordpress.createClient({
     url: "https://info229nodebot.wordpress.com/",
-    username: "estebantejeda",
-    password: "testbot01"
+    username: USERNAME,
+    password: PASSWORD
 });
 
 function postWordpress(text){
