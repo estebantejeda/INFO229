@@ -1,0 +1,22 @@
+{
+  "name": "Ejercicio_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/server",
+    "start": "node ./src/server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@slack/events-api": "^2.3.4",
+    "@slack/web-api": "^5.15.0",
+    "wikijs": "^6.0.1",
+    "youtube-sr": "^2.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
