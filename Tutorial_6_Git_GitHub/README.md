@@ -242,6 +242,48 @@ Date:   Mon Jan 11 18:53:40 2021 -0300
 
 ​	Todos los archivos utilizados están dentro de la carpeta "Git_Test" en caso de que deseen realizar estas pruebas.
 
+## Subiendo a GitHub
+
+1. Una vez que estemos listos para subir nuestro proyecto a GitHub, debemos crear un repositorio con nuestra cuenta y rellenar los siguientes datos.
+
+![Screenshot_20210111_192607](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/Screenshot_20210111_192607.png)
+
+2. Una vez creado el repositorio, veremos una ventana así. Este link que se nos entrega es donde almacenaremos nuestro proyecto en GitHub.
+
+![Screenshot_20210111_192858](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/Screenshot_20210111_192858.png)
+
+3. Ahora debemos abrir la terminal en la ruta de nuestro proyecto y conectar nuestro repositorio local (El proyecto almacenado en nuestro computador) con el repositorio remoto (El proyecto en Github)
+
+~~~bash
+$ git remote add origin https://github.com/estebantejeda/Test.git
+~~~
+
+4. Ahora nos movemos a la rama principal
+
+~~~bash
+$ git branch -M main
+~~~
+
+5. Y finalmente hacemos un `git push`, el cual nos permite subir todo nuestro proyecto local en el repositorio remoto. Este paso nos pedirá nombre de usuario (nuestro correo) y la contraseña.
+
+~~~bash
+$ git push -u origin main
+Username for 'https://github.com': esteban.tejeda@alumnos.uach.cl
+Password for 'https://esteban.tejeda@alumnos.uach.cl@github.com': 
+Enumerando objetos: 17, listo.
+Contando objetos: 100% (17/17), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (13/13), listo.
+Escribiendo objetos: 100% (17/17), 1.56 KiB | 1.56 MiB/s, listo.
+Total 17 (delta 4), reusado 0 (delta 0)
+remote: Resolving deltas: 100% (4/4), done.
+To https://github.com/estebantejeda/Test.git
+ * [new branch]      main -> main
+Rama 'main' configurada para hacer seguimiento a la rama remota 'main' de 'origin'.
+~~~
+
+6. Con esto, ya tendremos los conocimientos básicos para utilizar Git y GitHub
+
 ## Fuente
 
 * https://git-scm.com/
