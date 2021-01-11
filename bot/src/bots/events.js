@@ -44,7 +44,7 @@ function getTime(text){
     let end = text.indexOf('}');
     text = text.substring(start, end).trim();
     text = parseInt(text);
-    if((text.toString === 'NaN'|| text <= 0) ) return 1
+    if((text.toString() === 'NaN'|| text <= 0) ) return 1
     return text
 }
 
