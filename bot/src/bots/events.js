@@ -22,6 +22,7 @@ function getType(text){
 }
 
 function getText(text){
+    if (text.indexOf(']') === -1) return -1;
     let start = text.indexOf(']')+1;
     let end = text.length;
     text = text.substring(start, end).trim();
@@ -50,5 +51,7 @@ function election(data){
 }
 
 module.exports = {
-    slackEvents
+    slackEvents,
+    getText,
+    getType
 }
