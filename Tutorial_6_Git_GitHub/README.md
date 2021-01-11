@@ -1,4 +1,4 @@
- ![git-banner](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/git-banner.png)
+ ![](.images/git-banner.png)
 
 # Git
 
@@ -26,9 +26,9 @@ https://git-scm.com/download/win
 
 ## Comandos básicos
 
-![fc43b465-dbfb-465e-9705-b38d230452fc](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/fc43b465-dbfb-465e-9705-b38d230452fc.jpeg)
+![](.images/fc43b465-dbfb-465e-9705-b38d230452fc.jpeg)
 
-![79dab1f0-3c3d-493c-80e0-1dcbadc54f62](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/79dab1f0-3c3d-493c-80e0-1dcbadc54f62.jpeg)
+![](.images/79dab1f0-3c3d-493c-80e0-1dcbadc54f62.jpeg)
 
 ## Ejemplo de uso
 
@@ -246,11 +246,11 @@ Date:   Mon Jan 11 18:53:40 2021 -0300
 
 1. Una vez que estemos listos para subir nuestro proyecto a GitHub, debemos crear un repositorio con nuestra cuenta y rellenar los siguientes datos.
 
-![Screenshot_20210111_192607](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/Screenshot_20210111_192607.png)
+![](.images/Screenshot_20210111_192607.png)
 
 2. Una vez creado el repositorio, veremos una ventana así. Este link que se nos entrega es donde almacenaremos nuestro proyecto en GitHub.
 
-![Screenshot_20210111_192858](/home/esteban/Proyectos/INFO229/Tutorial_6_Git_GitHub/.images/Screenshot_20210111_192858.png)
+![](.images/Screenshot_20210111_192858.png)
 
 3. Ahora debemos abrir la terminal en la ruta de nuestro proyecto y conectar nuestro repositorio local (El proyecto almacenado en nuestro computador) con el repositorio remoto (El proyecto en Github)
 
