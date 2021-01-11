@@ -1,15 +1,29 @@
-const {STSECRET} = require('../config/config');
-
-const {createEventAdapter} = require('@slack/events-api');
 const {sendMessage} = require('./client');
 const {searchWiki} = require('../apis/wikipedia');
 const {searchYoutube} = require('../apis/youtube');
 const {postWordpress} = require('../apis/wordpress');
+const amqp = require('amqplib/callback_api');
 
-const slackEvents = createEventAdapter(STSECRET);
+let queue = 'task_queue';
+let secs = 1;
 
-slackEvents.on('app_mention', event => {
-    election(event.text);
+amqp.connect('amqp://localhost', (err, connection) => {
+    if(err) throw err;
+    connection.createChannel((err, channel) => {
+        if(err) throw err;
+        channel.assertQueue(queue, {
+            durable: true
+        });
+        channel.consume(queue, (data) => {
+            data = data.content.toString();
+            console.log(data);
+            election(data)
+            console.log("[x] Received %s", data);
+            setTimeout(() => {
+              console.log("[x] Done");
+            }, secs * 1000);
+        },{noAck: true});
+    });
 });
 
 function getType(text){
@@ -51,7 +65,6 @@ function election(data){
 }
 
 module.exports = {
-    slackEvents,
     getText,
     getType
 }
