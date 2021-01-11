@@ -4,4 +4,4 @@ function isPrime(num){
     return num > 1;
 }
 
-module.exports = isPrime
+module.exports = isPrime;

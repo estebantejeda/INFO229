@@ -10,4 +10,4 @@ function sumOfPrimes(array){
     return sumPrime;
 }
 
-module.exports = sumOfPrimes;
+module.exports = sumOfPrimes;   
