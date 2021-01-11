@@ -1,3 +1,0 @@
-pageviewapi==0.4.0
-wikipedia==1.4.0
-pymongo==3.9.0
