@@ -7,7 +7,6 @@ const slackEvents = createEventAdapter(STSECRET);
 let queue = 'task_queue';
 
 slackEvents.on('app_mention', event => {
-    console.log(event);
     amqp.connect('amqp://localhost', (err, connection) => {
         if(err) throw err;
         connection.createChannel((err, channel) => {

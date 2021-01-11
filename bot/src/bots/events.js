@@ -5,23 +5,17 @@ const {postWordpress} = require('../apis/wordpress');
 const amqp = require('amqplib/callback_api');
 
 let queue = 'task_queue';
-let secs = 1;
 
 amqp.connect('amqp://localhost', (err, connection) => {
     if(err) throw err;
     connection.createChannel((err, channel) => {
         if(err) throw err;
-        channel.assertQueue(queue, {
-            durable: true
-        });
+        channel.assertQueue(queue, {durable: true});
         channel.consume(queue, (data) => {
             data = data.content.toString();
-            console.log(data);
             election(data)
             console.log("[x] Received %s", data);
-            setTimeout(() => {
-              console.log("[x] Done");
-            }, secs * 1000);
+            setTimeout(() => console.log("[x] Done"), getTime(data) * 500);
         },{noAck: true});
     });
 });
@@ -41,6 +35,17 @@ function getText(text){
     let end = text.length;
     text = text.substring(start, end).trim();
     return text;
+}
+
+function getTime(text){
+    if (text.indexOf('{') === -1) return 1;
+    if (text.indexOf('}') === -1) return 1;
+    let start = text.indexOf('{')+1;
+    let end = text.indexOf('}');
+    text = text.substring(start, end).trim();
+    text = parseInt(text);
+    if((text.toString === 'NaN'|| text <= 0) ) return 1
+    return text
 }
 
 function election(data){
@@ -66,5 +71,6 @@ function election(data){
 
 module.exports = {
     getText,
-    getType
+    getType,
+    getTime
 }
