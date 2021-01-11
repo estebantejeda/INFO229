@@ -4,9 +4,10 @@ amqp.connect('amqp://localhost', (err, connection) => {
     if(err) throw err;
     connection.createChannel((err, channel) => {
         if(err) throw err;
-        let queueName = "technical";
-        channel.assertQueue(queueName, {durable: false});
-        channel.consume(queueName, (message) => {
+        let queue = "technical";
+        channel.assertQueue(queue, {durable: false});
+        console.log("[*] Waiting for messages in %s. To exit press CTRL+C", queue);
+        channel.consume(queue, (message) => {
             console.log("[x] receiver %s", message.content.toString());
         }, {noAck: true});
     });
